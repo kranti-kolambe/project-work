@@ -1,0 +1,67 @@
+<div class="container-fluid">
+<app-header></app-header>
+
+<br>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+
+            <div>
+                <button (click)="onAddEmployee()" 
+                class="btn btn-success">Add Employee
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+    
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <th>#</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th> Status</th>                 
+                     <th>Created Date</th>
+                     <th>Created By</th>
+                     
+                    <th>Country</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of empData;index as i" >
+                        <td> {{i+1}} </td>
+                        <td> {{item.id}} </td>
+                        <td> {{item.username}} </td>
+                        <td> {{item.email}} </td>
+                        <td> {{item.dept}} </td>
+                        <td> <h5 style="text-align: center;"> 
+                            <span [ngClass]="{
+                                'badge':true, 'badge-pill':true,
+                                'badge-success':item.status.toLowerCase()=='active',
+                                'badge-warning':item.status.toLowerCase()=='inactive',
+                                'badge-danger' : item.status.toLowerCase()== 'suspend'
+                            }" style="padding: 8px;" >
+                            {{item.status}}
+    
+                        </span></h5>  </td>
+                        <td> {{item.createddt | date:'dd-MM-yyyy'}}</td>
+                        <td> {{item.createdby}}</td>
+                        
+                        <td> {{item.country.cname}} </td>
+                    </tr>
+                </tbody>
+    
+            </table>
+    
+        </div>
+    
+    </div>
+    
+    
+    
+    </div>
